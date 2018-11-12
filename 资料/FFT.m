@@ -1,0 +1,28 @@
+%-- 08-10-7 обнГ8:15 --%
+f = imread('4.Fig4.03(a).jpg');
+imtool(f, []);
+F = fft2(f);
+S = abs(F);
+imtool(S, []);
+S1= log(1 + S);
+imtool(S1, []);
+FF = fftshift(F);
+imtool(abs(FF), []);
+S2= log(1 + abs(FF));
+imtool(S2, []);
+x = 0:511;
+y = 0:511;
+[X Y] = meshgrid(x, y);
+imtool(X, []);
+imtool(Y, []);
+m = (-1).^(X+Y);
+imtool(m, []);
+ff = double(f).*m;
+imtool(ff, []);
+F1 = fft2(ff);
+imtool(abs(F1), []);
+S3= log(1 + abs(F1));
+imtool(S3, []);
+f1 = imread('Fig4.03(aa).jpg');
+imtool(f1, []);
+imtool(log(1+abs(fftshift(fft2(f1)))), []);
